@@ -141,10 +141,111 @@ a discussion of this issue.
 \section{State of the art}
 \label{sec:soa}
 
+As far as we have been able to find, there is no research devoted
+exclusively to visualization to maximize involvement and interactivity
+in volunteer computing experiments. From the very beginning,
+BOINC@home included visualization of the results of the computation
+\cite{anderson2006designing}, but it was only for informative
+purposes, not a part of the system itself. 
 
+There has been, however, a certain amount of research in interactive
+evolutionary algorithms, where users perform all or some evolutionary
+operations; in our case, since the
+user has control of the browser, there is a limited amount of
+interaction with it, namely, the fact that by reloading the webpage they
+can apply a kind of hypermutation, killing the current population and
+generating new individuals some of which will make their way to the
+common pool via migration. In that sense, volunteer computing is also
+a way of {\em human computation} \cite{quinn2011human}, a concept that
+has also been applied to evolutionary algorithms \cite{972056, Nickerson2013}, in
+this case extensively and with all operators. In general, these type
+of human based evolutionary algorithms must be constrained to those in
+which the problem representation can be understand by us;
+\cite{cheng2004interactive} mentions evolution of text messages and
+applies it to evolution of colors, where users have to pick up two
+colored blocks to perform crossover; this is later on extended to the
+OneMax problem, comparing the performance of a human operator who does
+not know the shape of the fitness function with that of an interactive
+evolutionary algorithm where the user himself is the one that acts as
+fitness evaluator.
 
-\section{Methodology and experimental results}
-\label{sec:exp1}
+However, the visualization performance or the evolutionary algorithm itself is
+eschewed in all the problems presented above, so that the only hint
+that the user has of how the algorithm is doing is the fitness itself
+or, even, just a hint of how close the user is to his desired
+value. This is the problem we have been trying to solve and we will
+show our solutions below, before calling for others in the last part
+of the paper. 
+
+\section{Description of the system and some results}
+\label{sec:res}
+
+NodIO \cite{2016arXiv160101607M,DBLP:conf/gecco/GuervosG15} is a
+web-services based system that allows to run distributed evolutionary
+computing experiments, including volunteer computing systems, with a
+low overhead. 
+
+The common part of all algorithms is the server, that has been
+published with a free license in GitHub, which includes several REST
+(Representational state transfer)
+routes, which are remote procedure calls using the HTTP (Hypertext
+Transfer Protocol). In practice, that means that clients use a
+standard and well known interface, HTTP, to communicate with it and
+clients can be written in many different languages, including
+JavaScript on the client  or Perl. 
+
+The server receives individuals from the client using the {\tt PUT}
+HTTP command. The individual received is stored in a cache that is
+refreshed in sub-second intervals, currently set at 0.2 seconds, and
+has a finite size equal to 32, although it can have a few elements
+more before the refreshing period. The cache is renovated in a First
+In, First Out fashion, which, from the point of view of the
+evolutionary algorithm, contributes to the diversity of the stored
+population. In general, this way of using a stored population from
+which some individuals are drawn is called a pool-based evolutionary
+algorithm
+\cite{pool:ga,bollini1999distributed,gong2015distributed, sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702, DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}
+ stores them and returns a random individual from the
+store and some more information. 
+
+\begin{figure*}[!htb]
+\centering
+\includegraphics[width=0.95\linewidth]{all.png}
+\includegraphics[width=0.95\linewidth]{finish.png}
+\caption{The three panels showing the latest fitness, the cache size
+  and the best chromosome using 4 shades from white to black to
+  represent the number of ones in every block in the Trap
+  problem at the top; at bottom, the finished algorithm showing 5
+  black bars indicating that the 50 traps have been found. \label{fig:all}}
+\end{figure*}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.95\linewidth]{fitness.png}
+\caption{This panel, labeled with ``How are we doing'', shows
+  the evolution in time of the fitness, it rotates to show only the
+  last 5000 generations.  \label{fig:fitness}}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.95\linewidth]{howmany.png}
+\caption{This panel, labeled with ``How many are out there'', shows
+  the number of different IPs that are contributing to the simulation,
+  accumulated since the beginning of the simulation run.  \label{fig:howmany}}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.95\linewidth]{contribution.png}
+\caption{This panel, labeled with ``How much I am contributing'', in
+  fact shows the cache size. Cache increases when new individuals are
+  added to the pool; it stays the same if the users keep sending the
+  same individuals. The graph shows the activity of the last 5000
+  generations in a rotating fashion, eliminating the first as new ones
+  arrive.  \label{fig:howmuch}}
+\end{figure}
+
 
 
 
@@ -161,7 +262,7 @@ TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), PROY-PP201
 Projects 5622.15-P (ITM) and  PROINNOVA 2015: 220590 (CONACYT).
 
 \bibliographystyle{abbrv}
-\bibliography{geneura,volunteer,javascript,ror-js,GA-general}
+\bibliography{geneura,volunteer,javascript,pool}
 
 \end{document}
 
