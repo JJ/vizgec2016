@@ -214,7 +214,14 @@ The server receives individuals from the client using the {\tt PUT}
 HTTP command. The individual received is stored in a cache that is
 refreshed in sub-second intervals, currently set at 0.2 seconds, and
 has a finite size equal to 32, although it can contain a few elements
-more before the refreshing period finishes. The cache is renovated in a First
+more before the refreshing period finishes. The finite cache is used
+for implementation but also algorithmic reasons; it needs to be finite
+to limit the amount of memory used by the server, which could blow up
+to a size too big for the server, but from the algorithmic point of
+view, it is also  a good practice to keep only the latest solutions so
+that the clients are sent one of them, instead of one of many created
+during the whole experiment. 
+The cache is renovated in a First
 In, First Out fashion, which, from the point of view of the
 evolutionary algorithm, contributes to the diversity of the stored
 population, since it is renovated from time to time. In general, this way of using a stored population from
@@ -224,13 +231,19 @@ algorithm
   sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702,
   DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}; this type of
 asynchronous and persistent algorithm lends itself better for the
-ephemeral and asynchronous computing environment in which we are
+ephemeral and dynamic computing environment in which we are
 working. 
 
 The server receives the chromosome and its fitness and
  stores them returning to the client a random individual from the
 cache and some more information, like the cache size at this
-particular moment. 
+particular moment. This cache size information can be used by the
+client for detecting when the current algorithm has found a solution,
+or also for visualization purposes. A function for detecting when the
+solution is found is used and, when that happens, the cache is emptied
+and a variable that keeps track of the experiment number is
+incremented. In principle, any of those indicators can be used by the
+clients to check whether the experiment has finished or not. 
 
 The clients run an island-based evolutionary algorithm for solving the
 50-Trap problem programmed in JavaScript using a browser version of
@@ -243,7 +256,26 @@ by using different mechanisms. However, the population of every client
 has to be kept low to avoid overloading the volunteer computer;
 currently it is 128 individuals, and other mechanisms will need a
 level of analysis that is incompatible with the ephemeral nature of
-the system.
+the system. Every 100 generations, the client sends using HTTP PUT the
+best chromosome to the server, receiving in return a random chromosome
+from the cache and the cache size. If the client finds the solution,
+it stops. If the client finds that cache size has decreased by a
+certain number, it reloads the page, restarting the population all
+over again, avoiding overlapping ``old'' results with the new
+experiment.
+ 
+\begin{figure*}[!htb]
+\centering
+\includegraphics[width=0.99\linewidth]{tweet.png}
+\caption{Tweet asking for help in the volunteer computing experiment,
+  and also showing the amount of retweets and date. In most cases,
+  tweets were in Spanish.\label{fig:tweet}}
+\end{figure*}
+%
+In order to run the experiments, we announced it in social networks
+via a tweet, WhatsApp message, Facebook post, Telegram message or, in
+some occasions, LinkedIn. One of the announcements is shown in Figure
+\ref{fig:tweet}. 
 
 \begin{figure*}[!htb]
 \centering
@@ -255,6 +287,30 @@ the system.
   problem at the top; at bottom, the finished algorithm showing 5
   black bars indicating that the 50 traps have been found. \label{fig:all}}
 \end{figure*}
+%
+The client displays three panels, showing three different
+visualizations of the evolutionary algorithm. Two of them have been
+kept fixed for all experiments, and they are shown in Figure
+\ref{fig:all}. The top panels show, to the right, the fitness in the
+last 5000 generations at 100 generations interval. The bottom panel
+shows a visualization of the best individual, using blocks that
+represent the number of ones in 4-bit blocks with different colors
+that represent their block fitness, from 0 (transparent) to 2
+(black). 1 is the intermediate fitness, achieved with all 0s, and it
+is represented by dark gray. 
+
+From the point of view of the user, this is probably one of the best
+indicators of the stagnation of the simulation. The most likely
+situation is to have that panel stuck with all blocks in black except
+one in gray, with the fitness stuck at 99. If that happens for a long
+time, it is almost impossible for a single island to find the
+solution, because it is stuck in a local minimum from which it is
+impossible to get out with a single mutation; it needs a string of
+favorable mutations, all of them having a lower fitness. So in
+principle that situation could help the user to restart the simulation
+in that case, but it is almost impossible for the user to forecast
+when that will be happening and avoid it, either by restarting or by
+starting it in other browser tabs. 
 
 \begin{figure}[!htb]
 \centering
@@ -263,6 +319,25 @@ the system.
   the evolution in time of the fitness, it rotates to show only the
   last 5000 generations.  \label{fig:fitness}}
 \end{figure}
+%
+This information might be redundant with that shown in the fitness
+panel, shown in Figure \ref{fig:fitness}. However, it helps when you
+have several windows, side by side. If the best chromosome is the same
+in both, not only a single island is stuck, but the whole number of
+islands contributing are. That happens usually when there is a single
+island running for some time in that situation and all of a sudden
+several other volunteers come in. As soon as they start to receive
+random individuals from the cache, they are bound to get that {\em
+  super} individual, which will eventually {\em invade} the
+population, crashing global diversity. The best situation is when
+several individuals arrive at short intervals, contributing diversity
+but also individuals that are not so different; by the {\em
+  intermediate disturbance hypothesis} \cite{jj:2008:PPSN} that
+situation will boost the performance of the whole system. However, the
+user in general will run a single tab, so they will not know that is
+happening; this is a kind of information that we would need to convey
+to the user by way of visualization. But that is why we use the third
+panel. 
 
 \begin{figure}[!htb]
 \centering
@@ -271,6 +346,10 @@ the system.
   the number of different IPs that are contributing to the simulation,
   accumulated since the beginning of the simulation run.  \label{fig:howmany}}
 \end{figure}
+% 
+Initially we used as third panel the number of IPs that had
+participated so far, shown in Figure \ref{fig:howmany}. This was
+mainly for the benefit of us, not really the user; it was a way of knowi
 
 \begin{figure}[!htb]
 \centering
