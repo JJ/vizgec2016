@@ -213,16 +213,37 @@ JavaScript on the client  or Perl.
 The server receives individuals from the client using the {\tt PUT}
 HTTP command. The individual received is stored in a cache that is
 refreshed in sub-second intervals, currently set at 0.2 seconds, and
-has a finite size equal to 32, although it can have a few elements
-more before the refreshing period. The cache is renovated in a First
+has a finite size equal to 32, although it can contain a few elements
+more before the refreshing period finishes. The cache is renovated in a First
 In, First Out fashion, which, from the point of view of the
 evolutionary algorithm, contributes to the diversity of the stored
-population. In general, this way of using a stored population from
+population, since it is renovated from time to time. In general, this way of using a stored population from
 which some individuals are drawn is called a pool-based evolutionary
 algorithm
-\cite{pool:ga,bollini1999distributed,gong2015distributed, sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702, DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}
- stores them and returns a random individual from the
-store and some more information. 
+\cite{pool:ga,bollini1999distributed,gong2015distributed,
+  sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702,
+  DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}; this type of
+asynchronous and persistent algorithm lends itself better for the
+ephemeral and asynchronous computing environment in which we are
+working. 
+
+The server receives the chromosome and its fitness and
+ stores them returning to the client a random individual from the
+cache and some more information, like the cache size at this
+particular moment. 
+
+The clients run an island-based evolutionary algorithm for solving the
+50-Trap problem programmed in JavaScript using a browser version of
+the NodEO library \cite{DBLP:conf/gecco/GuervosVGES14,figshare:nodeo,nodeo2014}. It is a difficult combinatorial optimization and
+deceptive problem which has been chosen mainly for the time and the
+population size it needs to succeed. Deceptive problems are known for
+the high diversity they need for finding the solution; this diversity
+must be in the initial population or else maintained in the population
+by using different mechanisms. However, the population of every client
+has to be kept low to avoid overloading the volunteer computer;
+currently it is 128 individuals, and other mechanisms will need a
+level of analysis that is incompatible with the ephemeral nature of
+the system.
 
 \begin{figure*}[!htb]
 \centering

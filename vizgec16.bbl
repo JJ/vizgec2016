@@ -43,6 +43,10 @@ Y.-J. Gong, W.-N. Chen, Z.-H. Zhan, J.~Zhang, Y.~Li, Q.~Zhang, and J.-J. Li.
   state-of-the-art.
 \newblock {\em Applied Soft Computing}, 34:286--300, 2015.
 
+\bibitem{figshare:nodeo}
+J.~J.~M. Guerv{\'o}s;.
+\newblock Nodeo, 2014.
+
 \bibitem{972056}
 A.~Kosorukoff.
 \newblock Human based genetic algorithm.
@@ -60,6 +64,21 @@ J.-J. {Merelo}, M.~{Garc{\'{\i}}a-Valdez}, P.~A. {Castillo},
 \newblock {NodIO, a JavaScript framework for volunteer-based evolutionary
   algorithms : first results}.
 \newblock {\em ArXiv e-prints}, Jan. 2016.
+
+\bibitem{nodeo2014}
+J.~J. Merelo~Guerv\'{o}s.
+\newblock {NodEO}, a evolutionary algorithm library in {Node}.
+\newblock Technical report, GeNeura group, Mar. 2014.
+\newblock Available at \url{http://figshare.com/articles/nodeo/972892}.
+
+\bibitem{DBLP:conf/gecco/GuervosVGES14}
+J.-J. Merelo-Guerv{\'{o}}s, P.-A. Castillo-Valdivieso, A.~Mora-Garc{\'{\i}}a,
+  A.~Esparcia{-}Alc{\'{a}}zar, and V.-M. Rivas-Santos.
+\newblock {NodEO, a multi-paradigm distributed evolutionary algorithm platform
+  in JavaScript}.
+\newblock In D.~V. Arnold and E.~Alba, editors, {\em Genetic and Evolutionary
+  Computation Conference, {GECCO} '14, Vancouver, BC, Canada, July 12-16, 2014,
+  Companion Material Proceedings}, pages 1155--1162. {ACM}, 2014.
 
 \bibitem{DBLP:conf/gecco/GuervosG15}
 J.-J. Merelo-Guerv{\'{o}}s and P.~Garc{\'{\i}}a{-}S{\'{a}}nchez.
