@@ -52,17 +52,21 @@
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
 
-\numberofauthors{2} 
+\numberofauthors{3} 
 \author{
 \alignauthor
-Juan-J.~Merelo, \titlenote{Corresponding author}\\
+Juan-J.~Merelo\titlenote{Corresponding author}\\
 \affaddr{Dept. of Computer Architecture and Technology and CITIC}\\
 \affaddr{University of Granada, Granada, Spain} \\
 \email{jmerelo@ugr.es}
 \alignauthor
-Mario Garc\'ia-Valdez, 
+Mario Garc\'ia-Valdez \\
 \affaddr{Dept. of Graduate Studies}\\
-\affaddr{ Instituto Tecnológico de Tijuana, Tijuana, M\'exico}\\
+\affaddr{ Instituto Tecnol\'ogico de Tijuana, Tijuana, Mexico}\\
+\alignauthor
+Carlos Cotta\\
+\affaddr{Dept. LCC, ETSI Inform\'atica}\\
+\affaddr{ Universidad de M\'alaga, M\'alaga, Spain}\\
 }
 
 \maketitle
@@ -128,7 +132,7 @@ pool. The user can also load the webpage in several browsers or
 browser tabs so that it is adding more power and seeing how the
 solution spreads from one to the other. In any case, we have noticed
 that the user spontaneously is making it an {\em interactive}
-algorithm, by applying {\em hypermutation} operators or even {\em
+algorithm \cite{takagi01interactive}, by applying {\em hypermutation} operators or even {\em
   distributing} themselves the population if their machine performance
 allows them to do so. 
 
@@ -136,11 +140,9 @@ However, it will be impossible for the user to perceive what is
 happening if the visualization does not convey that information in a
 way that can be first understood by anyone without using any technical
 term and second does not add too much overhead to the algorithm
-itself. 
-
-As far as we know, the problem of visualizing an evolutionary
+itself. As far as we know, the problem of visualizing an evolutionary
 algorithm so that the non-technical and spontaneous user can help it
-find the solution faster has not been solved. We have made several
+find the solution faster has not been fully solved. We have made several
 attempts that we will present in this paper, but this paper is
 basically a request for comments during the workshop and later on so
 that the scientific community understands the basis of this problem
@@ -165,7 +167,8 @@ BOINC@home included visualization of the results of the computation
 purposes, not a part of the system itself. 
 
 There has been, however, a certain amount of research in interactive
-evolutionary algorithms, where users perform all or some evolutionary
+evolutionary algorithms, e.g., \cite{takagi01interactive,parmee:human-centric2003,parmee08user-centric,badillo13usercentric}, 
+where users perform all or some evolutionary
 operations; in our case, since the
 user has control of the browser, there is a limited amount of
 interaction with it, namely, the fact that by reloading the webpage they
@@ -176,7 +179,15 @@ a way of {\em human computation} \cite{quinn2011human}, a concept that
 has also been applied to evolutionary algorithms \cite{972056, Nickerson2013}, in
 this case extensively and with all operators. In general, these type
 of human based evolutionary algorithms must be constrained to those in
-which the problem representation can be understand by us;
+which the problem representation can be understand by us; 
+For example, some early approaches 
+\cite{Daw86} relied on the visualization of solutions so that the user can 
+pick his/her preferred ones. In a more general approach, \cite{takagi-jcis2000} 
+considered the utilization of dimensionality-reduction techniques in order
+to project the population of solutions to a more amenable space (a 2D plane)
+on which the user can express his preferences. The work of Deb et al. in
+multi-objective optimization \cite{DC07,DK07} was similarly aimed to direct 
+the exploration toward particular regions of the Pareto front.
 \cite{cheng2004interactive} mentions evolution of text messages and
 applies it to evolution of colors, where users have to pick up two
 colored blocks to perform crossover; this is later on extended to the
@@ -184,9 +195,8 @@ OneMax problem, comparing the performance of a human operator who does
 not know the shape of the fitness function with that of an interactive
 evolutionary algorithm where the user himself is the one that acts as
 fitness evaluator.
-
-However, the visualization performance or the evolutionary algorithm itself is
-eschewed in all the problems presented above, so that the only hint
+However, the visualization performance or the latter evolutionary algorithm is
+eschewed, so that the only hint
 that the user has of how the algorithm is doing is the fitness itself
 or, even, just a hint of how close the user is to his desired
 value. This is the problem we have been trying to solve and we will
@@ -274,11 +284,11 @@ store and some more information.
 \section*{Acknowledgment}
  
 This work has been supported in part by
-TIN2014-56494-C4-3-P (Spanish Ministry of Economy and Competitivity), PROY-PP2015-06 (Plan Propio 2015 UGR). Additional support was received by
-Projects 5622.15-P (ITM) and  PROINNOVA 2015: 220590 (CONACYT).
+TIN2014-56494-C4-{1,3}-P (Spanish Ministry of Economy and Competitivity), PROY-PP2015-06 (Plan Propio 2015 UGR). Additional support was received by
+Projects 5622.15-P (ITM) DNEMESIS P10-TIC-6083 (Junta de Andaluc\'{\i}a) and PROINNOVA 2015: 220590 (CONACYT).
 
 \bibliographystyle{abbrv}
-\bibliography{geneura,volunteer,javascript,pool}
+\bibliography{carlos,geneura,volunteer,javascript,pool}
 
 \end{document}
 
