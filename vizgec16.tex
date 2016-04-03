@@ -218,7 +218,7 @@ of the paper.
 \label{sec:res}
 
 NodIO \cite{2016arXiv160101607M,DBLP:conf/gecco/GuervosG15} is a
-web-services based system that allows to run distributed evolutionary
+web-services based system that provides a basic platform to run distributed evolutionary
 computing experiments, including volunteer computing systems, with a
 low overhead. 
 
@@ -232,7 +232,7 @@ clients can be written in many different languages, including
 JavaScript on the client  or Perl. 
 
 The server receives individuals from the client using the {\tt PUT}
-HTTP command. The individual received is stored in a cache that is
+HTTP method. The individual received is stored in a cache that is
 refreshed in sub-second intervals, currently set at 0.2 seconds, and
 has a finite size equal to 32, although it can contain a few elements
 more before the refreshing period finishes. The finite cache is used
@@ -240,7 +240,7 @@ for implementation but also algorithmic reasons; it needs to be finite
 to limit the amount of memory used by the server, which could blow up
 to a size too big for the server, but from the algorithmic point of
 view, it is also  a good practice to keep only the latest solutions so
-that the clients are sent one of them, instead of one of many created
+that one of them is sent to the clients, instead of one of the many created
 during the whole experiment. 
 The cache is renovated in a First
 In, First Out fashion, which, from the point of view of the
