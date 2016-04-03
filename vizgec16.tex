@@ -418,12 +418,12 @@ interactive experiment.
 \section{What can be visualized and how it could help}
 \label{sec:conclusion}
 
-For the time being, the only possibility the user has is to start  or
-restart new islands. However, this need not be the only way the user
-can help the simulation. Even keeping the interface as simple as
+For the time being, the only possible interactions the user has is to start  or
+restart new islands. However, this does not need to be the only way the user 
+can help the simulation. Even keeping the user interface as simple as
 possible, other possibilities could include:\begin{itemize}
 \item {\em Killing} the best individual, thus immediately creating
-  diversity by having the rest compete.
+  diversity by forcing the rest to compete.
 \item Increasing or decreasing the population size. A bigger
   population will have higher initial diversity.
 \item Increasing or decreasing the mutation or crossover rate. For the time being,
@@ -433,7 +433,7 @@ possible, other possibilities could include:\begin{itemize}
 \end{itemize}
 
 However, even if whatever the user does will contribute to diversity,
-if it is done blindly will explore more than exploit and be thus a
+if it is done blindly it will explore more than exploit and thus be a
 waste of computational resources. That is why there are several
 possible ways of showing progress and diversity, which is a predictor
 for future progress:\begin{itemize}
@@ -445,7 +445,7 @@ for future progress:\begin{itemize}
   entropy plotted, instead or alongside the cache size.
 \end{itemize}
 
-This can be complemented by other visualization measures, such as \begin{itemize}
+This can be complemented by other visualization techniques, such as \begin{itemize}
 \item Use Twitter or a Telegram channel to represent the progress of
   the current experiment, or making calls when a new experiment has
   started to have an early infusion of diversity.
@@ -455,10 +455,10 @@ This can be complemented by other visualization measures, such as \begin{itemize
   been made. The fitness has the problem that, after certain time, all
   fitness would be the same. However, this can be seen as an indicator
   that the experiment has stagnated and thus a restart has to be made.
-\item Keep past history and represent current experiment comparing its
+\item Keep past history and represent the current experiment comparing its
   progress to the progress of previous ones.
-\item Show global fitness alongside local fitness. Once again, global
-  best fitness (as contained in the cache) is not the best predictor
+\item Show global fitness alongside local fitness. Once again, the 
+  best global fitness (as contained in the cache) is not the best predictor
   of future progress, since the nature of the problem will mean that
   reaching the global fitness will, in fact, mean that the population
   has converged to a local minimum
@@ -488,11 +488,12 @@ repository that is open for collaboration and discussion.
   action if he needs to?
 \item How can we also represent diversity so that it conveys to the
   user the fact that he or she can help by taking whatever measures
-  the client allows, even the simple restart?
+  the client allows, even a simple restart?
 \item Should we use some kind of reinforcement, indicating whether the
   individuals created locally by the user have helped find the global solution?
 \item How could we gamify participation so that, at the same time,
   cheating is discouraged?
+\item How can we implement this ideas with a minimum overhead to the system?  
 \item Finally, how can any of these measures be taken so that it is
   not a impossible overhead for the algorithm itself?
 \end{enumerate}
