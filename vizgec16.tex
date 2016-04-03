@@ -354,7 +354,15 @@ panel.
 % 
 Initially we used as third panel the number of IPs that had
 participated so far, shown in Figure \ref{fig:howmany}. This was
-mainly for the benefit of us, not really the user; it was a way of knowi
+mainly for the benefit of us, not really the user; it was a way of
+knowing the impact of some particular announcement and also to see how
+many users were there at a particular time. However, the user could
+gather no information either about his particular involvement or about
+the progress of the simulation. Besides, it was the {\em total} number
+of IPs from the beginning of the batch of experiments, it did not show
+the instantaneous, or in the last minutes, number of participating
+IPs. That is why we opted to change that visualization to a new one
+that at least included some information on it. 
 
 \begin{figure}[!htb]
 \centering
@@ -364,15 +372,59 @@ mainly for the benefit of us, not really the user; it was a way of knowi
   added to the pool; it stays the same if the users keep sending the
   same individuals. The graph shows the activity of the last 5000
   generations in a rotating fashion, eliminating the first as new ones
-  arrive.  \label{fig:howmuch}}
+  arrive. In this case the cache has changed size since some other
+  user has found the solution.   \label{fig:howmuch}}
 \end{figure}
+%
+Figure \ref{fig:howmuch} was labelled {\em how much I am
+  contributing}. That is not exactly what is shown in the graph, that
+shows the cache size. However, if you combine this panel with the
+other, and the fitness panel and the chromosome panel shows some
+change, you will see if that change is incorporated to the cache if
+that changes size. If the cache remains the same, no new individuals
+are being generated and again you can have a perspective of the whole
+experiment being stagnated in a single view; the user can then decide
+to restart or also to create new populations. It is still a poor way
+of conveying global information and it requires a certain amount of
+information given to the user so that he or she can understand what is
+going on.
 
-
+In order to see whether this new panel was more effective from the
+point of view of the user interaction than the previous one, we
+measured the amount of {\em reboots}, that is, new initializations of
+population by the user, either by restarting one window or starting
+new ones. In order to measure this effectivity, we measuered the
+amount of reboots per IP. When the first graph was used, the average
+was 0.74; the second graph, depending on the batch of experiments,
+registered averages over 1, 1.58 in a first batch, 1.16 in a second
+batch, both carried out in the month of February and March, indicating
+an average of more than 1 reboot per user. This might indicate that
+showing more information to the user, specially about the global
+progress of the experiment, encourages them to act on it, by using the
+only tool they have: reloading the page, thus restarting the
+experiment, or loading it in new pages. And that is also the reason
+why we think that using innovative ways of visualization will
+encourage them to interact even more with it, turning it into a truly
+interactive experiment. 
 
 
 %---------------------------------------------------------------
-\section{Conclusions and future work}
+\section{What can be visualized and how it could help}
 \label{sec:conclusion}
+
+For the time being, the only possibility the user has is to start  or
+restart new islands. However, this need not be the only way the user
+can help the simulation. Even keeping the interface as simple as
+possible, other possibilities could include:\begin{itemize}
+\item {\em Killing} the best individual, thus immediately creating
+  diversity by having the rest compete.
+\item Increasing or decreasing the population size. A bigger
+  population will have higher initial diversity.
+\item Increasing or decreasing the mutation or crossover rate. For the time being,
+  bitflip mutation is used on every new generated individual. Maybe it
+  could be decreased to a lower percentage, or increase the number of
+  bits flipped for every individual generated.
+\end{itemize}
 
 
 %---------------------------------------------------------------
