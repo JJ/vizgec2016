@@ -1,46 +1,140 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{badillo13usercentric}
-A.~R. Badillo, J.~J. Ruiz, C.~Cotta, and A.~J. Fern{\'{a}}ndez~Leiva.
-\newblock On user-centric memetic algorithms.
-\newblock {\em Soft Computing}, 17(2):285--300, 2013.
+\bibitem{anderson2006designing}
+D.~P. Anderson, C.~Christensen, and B.~Allen.
+\newblock Designing a runtime system for volunteer computing.
+\newblock In {\em Proceedings of the 2006 ACM/IEEE conference on
+  Supercomputing}, page 126. ACM, 2006.
 
-\bibitem{Daw86}
-R.~Dawkins.
-\newblock {\em The BlindWatchmaker, 1986.}
-\newblock Longman, Essex, U.K., 1986.
+\bibitem{bollini1999distributed}
+A.~Bollini and M.~Piastra.
+\newblock {Distributed and persistent evolutionary algorithms: a design
+  pattern}.
+\newblock In {\em Genetic Programming, Proceedings EuroGP\'{}99}, number 1598
+  in Lecture notes in computer science, pages 173--183. Springer, 1999.
 
-\bibitem{DC07}
-K.~Deb and S.~Chaudhuri.
-\newblock I-mode: An interactive multi-objective optimization and
-  decision-making using evolutionary methods.
-\newblock KanGal report 2007003, Kanpur Genetic Algorithms Laboratory, 2007.
+\bibitem{cheng2004interactive}
+C.~D. Cheng and A.~Kosorukoff.
+\newblock Interactive one-max problem allows to compare the performance of
+  interactive and human-based genetic algorithms.
+\newblock In {\em Genetic and Evolutionary Computation--GECCO 2004}, pages
+  983--993. Springer, 2004.
 
-\bibitem{DK07}
-K.~Deb and A.~Kumar.
-\newblock Interactive evolutionary multi-objective optimization and
-  decision-making using reference direction method.
-\newblock KanGal report 2007001, Kanpur Genetic Algorithms Laboratory, 2007.
+\bibitem{garcia2014unreliable}
+M.~Garc{\'\i}a-Valdez, J.~J.~M. Guerv{\'o}s, and F.~F. de~Vega.
+\newblock Unreliable heterogeneous workers in a pool-based evolutionary
+  algorithm.
+\newblock In A.~I. Esparcia-Alc{\'{a}}zar and A.~M. Mora, editors, {\em
+  Applications of Evolutionary Computation}, Lecture Notes in Computer Science,
+  pages 726--737. Springer, 2014.
 
-\bibitem{parmee:human-centric2003}
-I.~C. Parmee.
-\newblock Human-centric evolutionary systems in design and decision-making.
-\newblock In J.-P. Rennard, editor, {\em Handbook of Research on
-  Nature-Inspired Computing for Economics and Management}, pages 395--411.
-  {IGI} Global, 2007.
+\bibitem{LNCS86720702}
+M.~Garc\'{\i}a-Valdez, L.~Trujillo, J.~J. Merelo-Guerv\'{o}s, and F.~F.
+  de~Vega.
+\newblock Randomized parameter settings for heterogeneous workers in a
+  pool-based evolutionary algorithm.
+\newblock In T.~Bartz-Beielstein, J.~Branke, B.~Filipi\v{c}, and J.~Smith,
+  editors, {\em Parallel Problem Solving from Nature -- PPSN XIII}, volume 8672
+  of {\em Lecture Notes in Computer Science}, pages 702--710. Springer, 2014.
 
-\bibitem{parmee08user-centric}
-I.~C. Parmee, J.~A.~R. Abraham, and A.~Machwe.
-\newblock User-centric evolutionary computing: Melding human and machine
-  capability to satisfy multiple criteria.
-\newblock In J.~Knowles, D.~Corne, K.~Deb, and D.~R. Chair, editors, {\em
-  Multiobjective Problem Solving from Nature}, Natural Computing Series, pages
-  263--283. Springer, Berlin Heidelberg, 2008.
+\bibitem{gong2015distributed}
+Y.-J. Gong, W.-N. Chen, Z.-H. Zhan, J.~Zhang, Y.~Li, Q.~Zhang, and J.-J. Li.
+\newblock Distributed evolutionary algorithms and their models: A survey of the
+  state-of-the-art.
+\newblock {\em Applied Soft Computing}, 34:286--300, 2015.
 
-\bibitem{takagi01interactive}
-H.~Takagi.
-\newblock Interactive evolutionary computation: Fusion of the capabilities of
-  {EC} optimization and human evaluation.
-\newblock {\em Proceedings of the IEEE}, 9:1275--1296, 2001.
+\bibitem{figshare:nodeo}
+J.~J.~M. Guerv{\'o}s;.
+\newblock Nodeo, 2014.
+
+\bibitem{972056}
+A.~Kosorukoff.
+\newblock Human based genetic algorithm.
+\newblock In {\em Systems, Man, and Cybernetics, 2001 IEEE International
+  Conference on}, volume~5, pages 3464--3469 vol.5, 2001.
+
+\bibitem{sofea:naco}
+J.~Merelo, A.~Mora, C.~Fernandes, and A.~I. Esparcia-Alc{\'a}zar.
+\newblock Designing and testing a pool-based evolutionary algorithm.
+\newblock {\em Natural Computing}, 12(2):149--162, 2013.
+
+\bibitem{2016arXiv160101607M}
+J.-J. {Merelo}, M.~{Garc{\'{\i}}a-Valdez}, P.~A. {Castillo},
+  P.~{Garc{\'{\i}}a-S{\'a}nchez}, P.~{de las Cuevas}, and N.~{Rico}.
+\newblock {NodIO, a JavaScript framework for volunteer-based evolutionary
+  algorithms : first results}.
+\newblock {\em ArXiv e-prints}, Jan. 2016.
+
+\bibitem{jj:2008:PPSN}
+J.~J. Merelo, A.~M. Mora, P.~A. Castillo, J.~L.~J. Laredo, L.~Araujo, K.~C.
+  Sharman, A.~I. Esparcia-Alcázar, E.~Alfaro-Cid, and C.~Cotta.
+\newblock Testing the intermediate disturbance hypothesis: Effect of
+  asynchronous population incorporation on multi-deme evolutionary algorithms.
+\newblock In G.~Rudolph, T.~Jansen, S.~Lucas, C.~Poloni, and N.~Beume, editors,
+  {\em Parallel Problem Solving from Nature - PPSN X}, volume 5199 of {\em
+  LNCS}, pages 266--275, Dortmund, 13-17 Sept. 2008. Springer.
+
+\bibitem{nodeo2014}
+J.~J. Merelo~Guerv\'{o}s.
+\newblock {NodEO}, a evolutionary algorithm library in {Node}.
+\newblock Technical report, GeNeura group, Mar. 2014.
+\newblock Available at \url{http://figshare.com/articles/nodeo/972892}.
+
+\bibitem{DBLP:conf/gecco/GuervosVGES14}
+J.-J. Merelo-Guerv{\'{o}}s, P.-A. Castillo-Valdivieso, A.~Mora-Garc{\'{\i}}a,
+  A.~Esparcia{-}Alc{\'{a}}zar, and V.-M. Rivas-Santos.
+\newblock {NodEO, a multi-paradigm distributed evolutionary algorithm platform
+  in JavaScript}.
+\newblock In D.~V. Arnold and E.~Alba, editors, {\em Genetic and Evolutionary
+  Computation Conference, {GECCO} '14, Vancouver, BC, Canada, July 12-16, 2014,
+  Companion Material Proceedings}, pages 1155--1162. {ACM}, 2014.
+
+\bibitem{DBLP:conf/gecco/GuervosG15}
+J.-J. Merelo-Guerv{\'{o}}s and P.~Garc{\'{\i}}a{-}S{\'{a}}nchez.
+\newblock Designing and modeling a browser-based distributed evolutionary
+  computation system.
+\newblock In J.~L.~J. Laredo, S.~Silva, and A.~I. Esparcia{-}Alc{\'{a}}zar,
+  editors, {\em Genetic and Evolutionary Computation Conference, {GECCO} 2015,
+  Madrid, Spain, July 11-15, 2015, Companion Material Proceedings}, pages
+  1117--1124. {ACM}, 2015.
+
+\bibitem{sofea:evopar2012}
+J.-J. Merelo-Guerv{\'o}s, A.~Mora, J.~A. Cruz, and A.~I. Esparcia.
+\newblock Pool-based distributed evolutionary algorithms using an object
+  database.
+\newblock In C.~di~Chio~et al., editor, {\em EvoApplications 2012 Proceedings},
+  pages 441--450, 2012.
+
+\bibitem{DBLP:conf/3pgcic/GuervosMFEL12}
+J.-J. Merelo-Guerv{\'o}s, A.-M. Mora, C.-M. Fernandes, A.-I.
+  Esparcia-Alc{\'a}zar, and J.-L. Jim{\'e}nez-Laredo.
+\newblock Pool vs. island based evolutionary algorithms: An initial
+  exploration.
+\newblock In F.~Xhafa, L.~Barolli, and K.~F. Li, editors, {\em 3PGCIC}, pages
+  19--24. IEEE, 2012.
+
+\bibitem{Nickerson2013}
+J.~V. Nickerson.
+\newblock Human-based evolutionary computing.
+\newblock In P.~Michelucci, editor, {\em Handbook of Human Computation}, pages
+  641--648, New York, NY, 2013. Springer New York.
+
+\bibitem{quinn2011human}
+A.~J. Quinn and B.~B. Bederson.
+\newblock Human computation: a survey and taxonomy of a growing field.
+\newblock In {\em Proceedings of the SIGCHI conference on human factors in
+  computing systems}, pages 1403--1412. ACM, 2011.
+
+\bibitem{pool:ga}
+G.~Roy, H.~Lee, J.~Welch, Y.~Zhao, V.~Pandey, and D.~Thurston.
+\newblock A distributed pool architecture for genetic algorithms.
+\newblock In {\em Evolutionary Computation, 2009. CEC '09. IEEE Congress on},
+  pages 1177--1184, May 2009.
+
+\bibitem{DBLP:journals/grid/ValdezTGVO15}
+M.~G. Valdez, L.~Trujillo, J.~J. Merelo-Guerv{\'{o}}s, F.~F. de~Vega, and
+  G.~Olague.
+\newblock The evospace model for pool-based evolutionary algorithms.
+\newblock {\em J. Grid Comput.}, 13(3):329--349, 2015.
 
 \end{thebibliography}

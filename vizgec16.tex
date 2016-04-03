@@ -223,16 +223,74 @@ JavaScript on the client  or Perl.
 The server receives individuals from the client using the {\tt PUT}
 HTTP command. The individual received is stored in a cache that is
 refreshed in sub-second intervals, currently set at 0.2 seconds, and
-has a finite size equal to 32, although it can have a few elements
-more before the refreshing period. The cache is renovated in a First
+has a finite size equal to 32, although it can contain a few elements
+more before the refreshing period finishes. The finite cache is used
+for implementation but also algorithmic reasons; it needs to be finite
+to limit the amount of memory used by the server, which could blow up
+to a size too big for the server, but from the algorithmic point of
+view, it is also  a good practice to keep only the latest solutions so
+that the clients are sent one of them, instead of one of many created
+during the whole experiment. 
+The cache is renovated in a First
 In, First Out fashion, which, from the point of view of the
 evolutionary algorithm, contributes to the diversity of the stored
-population. In general, this way of using a stored population from
+population, since it is renovated from time to time. In general, this way of using a stored population from
 which some individuals are drawn is called a pool-based evolutionary
 algorithm
-\cite{pool:ga,bollini1999distributed,gong2015distributed, sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702, DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}
- stores them and returns a random individual from the
-store and some more information. 
+\cite{pool:ga,bollini1999distributed,gong2015distributed,
+  sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702,
+  DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}; this type of
+asynchronous and persistent algorithm lends itself better for the
+ephemeral and dynamic computing environment in which we are
+working. 
+
+The server receives the chromosome and its fitness and
+ stores them returning to the client a random individual from the
+cache and some more information, like the cache size at this
+particular moment. This cache size information can be used by the
+client for detecting when the current algorithm has found a solution,
+or also for visualization purposes. A function for detecting when the
+solution is found is used and, when that happens, the cache is emptied
+and a variable that keeps track of the experiment number is
+incremented. In principle, any of those indicators can be used by the
+clients to check whether the experiment has finished or not. 
+
+The clients run an island-based evolutionary algorithm for solving the
+50-Trap problem programmed in JavaScript using a browser version of
+the NodEO library \cite{DBLP:conf/gecco/GuervosVGES14,figshare:nodeo,nodeo2014}. It is a difficult combinatorial optimization and
+deceptive problem which has been chosen mainly for the time and the
+population size it needs to succeed. Deceptive problems are known for
+the high diversity they need for finding the solution; this diversity
+must be in the initial population or else maintained in the population
+by using different mechanisms. However, the population of every client
+has to be kept low to avoid overloading the volunteer computer;
+currently it is 128 individuals, and other mechanisms will need a
+level of analysis that is incompatible with the ephemeral nature of
+the system. Every 100 generations, the client sends using HTTP PUT the
+best chromosome to the server, receiving in return a random chromosome
+from the cache and the cache size. If the client finds the solution,
+it stops. If the client finds that cache size has decreased by a
+certain number, it reloads the page, restarting the population all
+over again, avoiding overlapping ``old'' results with the new
+experiment.
+ 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.99\linewidth]{tweet.png}
+\caption{Tweet asking for help in the volunteer computing experiment,
+  and also showing the amount of retweets and date. In most cases,
+  tweets were in Spanish. The URL mentioned is active at the time of
+  writing this paper. \label{fig:tweet}}
+\end{figure}
+%
+In order to run the experiments, we announced it in social networks
+via a tweet, WhatsApp message, Facebook post, Telegram message or, in
+some occasions, LinkedIn. One of the announcements is shown in Figure
+\ref{fig:tweet}. Volunteer computing cannot be understood without its
+social part, since it needs a continuous inflow of new
+users, but so far there is no relation to the algorithm itself or the
+current situation. Using social networks to visualize the progress of
+the algorithm is also an area that might be interesting to explore. 
 
 \begin{figure*}[!htb]
 \centering
@@ -244,6 +302,30 @@ store and some more information.
   problem at the top; at bottom, the finished algorithm showing 5
   black bars indicating that the 50 traps have been found. \label{fig:all}}
 \end{figure*}
+%
+The client displays three panels, showing three different
+visualizations of the evolutionary algorithm. Two of them have been
+kept fixed for all experiments, and they are shown in Figure
+\ref{fig:all}. The top panels show, to the right, the fitness in the
+last 5000 generations at 100 generations interval. The bottom panel
+shows a visualization of the best individual, using blocks that
+represent the number of ones in 4-bit blocks with different colors
+that represent their block fitness, from 0 (transparent) to 2
+(black). 1 is the intermediate fitness, achieved with all 0s, and it
+is represented by dark gray. 
+
+From the point of view of the user, this is probably one of the best
+indicators of the stagnation of the simulation. The most likely
+situation is to have that panel stuck with all blocks in black except
+one in gray, with the fitness stuck at 99. If that happens for a long
+time, it is almost impossible for a single island to find the
+solution, because it is stuck in a local minimum from which it is
+impossible to get out with a single mutation; it needs a string of
+favorable mutations, all of them having a lower fitness. So in
+principle that situation could help the user to restart the simulation
+in that case, but it is almost impossible for the user to forecast
+when that will be happening and avoid it, either by restarting or by
+starting it in other browser tabs. 
 
 \begin{figure}[!htb]
 \centering
@@ -252,6 +334,25 @@ store and some more information.
   the evolution in time of the fitness, it rotates to show only the
   last 5000 generations.  \label{fig:fitness}}
 \end{figure}
+%
+This information might be redundant with that shown in the fitness
+panel, shown in Figure \ref{fig:fitness}. However, it helps when you
+have several windows, side by side. If the best chromosome is the same
+in both, not only a single island is stuck, but the whole number of
+islands contributing are. That happens usually when there is a single
+island running for some time in that situation and all of a sudden
+several other volunteers come in. As soon as they start to receive
+random individuals from the cache, they are bound to get that {\em
+  super} individual, which will eventually {\em invade} the
+population, crashing global diversity. The best situation is when
+several individuals arrive at short intervals, contributing diversity
+but also individuals that are not so different; by the {\em
+  intermediate disturbance hypothesis} \cite{jj:2008:PPSN} that
+situation will boost the performance of the whole system. However, the
+user in general will run a single tab, so they will not know that is
+happening; this is a kind of information that we would need to convey
+to the user by way of visualization. But that is why we use the third
+panel. 
 
 \begin{figure}[!htb]
 \centering
@@ -260,6 +361,18 @@ store and some more information.
   the number of different IPs that are contributing to the simulation,
   accumulated since the beginning of the simulation run.  \label{fig:howmany}}
 \end{figure}
+% 
+Initially we used as third panel the number of IPs that had
+participated so far, shown in Figure \ref{fig:howmany}. This was
+mainly for the benefit of us, not really the user; it was a way of
+knowing the impact of some particular announcement and also to see how
+many users were there at a particular time. However, the user could
+gather no information either about his particular involvement or about
+the progress of the simulation. Besides, it was the {\em total} number
+of IPs from the beginning of the batch of experiments, it did not show
+the instantaneous, or in the last minutes, number of participating
+IPs. That is why we opted to change that visualization to a new one
+that at least included some information on it. 
 
 \begin{figure}[!htb]
 \centering
@@ -269,19 +382,68 @@ store and some more information.
   added to the pool; it stays the same if the users keep sending the
   same individuals. The graph shows the activity of the last 5000
   generations in a rotating fashion, eliminating the first as new ones
-  arrive.  \label{fig:howmuch}}
+  arrive. In this case the cache has changed size since some other
+  user has found the solution.   \label{fig:howmuch}}
 \end{figure}
+%
+Figure \ref{fig:howmuch} was labelled {\em how much I am
+  contributing}. That is not exactly what is shown in the graph, that
+shows the cache size. However, if you combine this panel with the
+other, and the fitness panel and the chromosome panel shows some
+change, you will see if that change is incorporated to the cache if
+that changes size. If the cache remains the same, no new individuals
+are being generated and again you can have a perspective of the whole
+experiment being stagnated in a single view; the user can then decide
+to restart or also to create new populations. It is still a poor way
+of conveying global information and it requires a certain amount of
+information given to the user so that he or she can understand what is
+going on.
 
-
+In order to see whether this new panel was more effective from the
+point of view of the user interaction than the previous one, we
+measured the amount of {\em reboots}, that is, new initializations of
+population by the user, either by restarting one window or starting
+new ones. In order to measure this effectivity, we measuered the
+amount of reboots per IP. When the first graph was used, the average
+was 0.74; the second graph, depending on the batch of experiments,
+registered averages over 1, 1.58 in a first batch, 1.16 in a second
+batch, both carried out in the month of February and March, indicating
+an average of more than 1 reboot per user. This might indicate that
+showing more information to the user, specially about the global
+progress of the experiment, encourages them to act on it, by using the
+only tool they have: reloading the page, thus restarting the
+experiment, or loading it in new pages. And that is also the reason
+why we think that using innovative ways of visualization will
+encourage them to interact even more with it, turning it into a truly
+interactive experiment. 
 
 
 %---------------------------------------------------------------
-\section{Conclusions and future work}
+\section{What can be visualized and how it could help}
 \label{sec:conclusion}
 
+For the time being, the only possibility the user has is to start  or
+restart new islands. However, this need not be the only way the user
+can help the simulation. Even keeping the interface as simple as
+possible, other possibilities could include:\begin{itemize}
+\item {\em Killing} the best individual, thus immediately creating
+  diversity by having the rest compete.
+\item Increasing or decreasing the population size. A bigger
+  population will have higher initial diversity.
+\item Increasing or decreasing the mutation or crossover rate. For the time being,
+  bitflip mutation is used on every new generated individual. Maybe it
+  could be decreased to a lower percentage, or increase the number of
+  bits flipped for every individual generated.
+\end{itemize}
+
+However, even if whatever the user does will contribute to diversity,
+if it is done blindly will explore more than exploit and be thus a
+waste of computational resources. That is why there are several
+possible ways of showing progress and diversity, which is a predictor
+for future progress.
 
 %---------------------------------------------------------------
-\section*{Acknowledgment}
+\section*{Acknowledgments}
  
 This work has been supported in part by
 TIN2014-56494-C4-{1,3}-P (Spanish Ministry of Economy and Competitivity), PROY-PP2015-06 (Plan Propio 2015 UGR). Additional support was received by
