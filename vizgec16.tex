@@ -430,7 +430,56 @@ However, even if whatever the user does will contribute to diversity,
 if it is done blindly will explore more than exploit and be thus a
 waste of computational resources. That is why there are several
 possible ways of showing progress and diversity, which is a predictor
-for future progress.
+for future progress:\begin{itemize}
+\item Represent the convergence of the population towards a single
+  individual by showing, using grayscale, the uniformity of values for
+  all bits. This can be represented alongside the best one, or maybe
+  instead of the best one.
+\item Represent global diversity by having a measure of compression
+  entropy plotted, instead or alongside the cache size.
+\end{itemize}
+
+This can be complemented by other visualization measures, such as \begin{itemize}
+\item Use Twitter or a Telegram channel to represent the progress of
+  the current experiment, or making calls when a new experiment has
+  started to have an early infusion of diversity.
+\item Represent the progress of the particular user against the rest
+  of the users, showing the fitness of every one, for instance, or the
+  time every one has spent represented by the number of PUTs that have
+  been made. The fitness has the problem that, after certain time, all
+  fitness would be the same. However, this can be seen as an indicator
+  that the experiment has stagnated and thus a restart has to be made.
+\item Keep past history and represent current experiment comparing its
+  progress to the progress of previous ones.
+\item Show global fitness alongside local fitness. Once again, global
+  best fitness (as contained in the cache) is not the best predictor
+  of future progress, since the nature of the problem will mean that
+  reaching the global fitness will, in fact, mean that the population
+  has converged to a local minimum
+\end{itemize}
+
+More important maybe that the data itself is the way of representing
+it. A visualization that shows how well or badly the global algorithm
+is doing would help to encourage the users to take measures to improve
+the situation. That is why we finish this paper with a series of
+research questions
+
+\section{Research questions}
+
+\begin{enumerate}
+\item How can we represent in a meaningful but at the same time simple
+  way the global progress of the simulation so that the user can take
+  action if he needs to?
+\item How can we also represent diversity so that it conveys to the
+  user the fact that he or she can help by taking whatever measures
+  the client allows, even the simple restart?
+\item Should we use some kind of reinforcement, indicating whether the
+  individuals created locally by the user have helped find the global solution?
+\item How could we gamify participation so that, at the same time,
+  cheating is discouraged?
+\item Finally, how can any of these measures be taken so that it is
+  not a impossible overhead for the algorithm itself?
+\end{itemize}
 
 %---------------------------------------------------------------
 \section*{Acknowledgments}
