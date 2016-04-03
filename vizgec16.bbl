@@ -6,6 +6,11 @@ D.~P. Anderson, C.~Christensen, and B.~Allen.
 \newblock In {\em Proceedings of the 2006 ACM/IEEE conference on
   Supercomputing}, page 126. ACM, 2006.
 
+\bibitem{badillo13usercentric}
+A.~R. Badillo, J.~J. Ruiz, C.~Cotta, and A.~J. Fern{\'{a}}ndez~Leiva.
+\newblock On user-centric memetic algorithms.
+\newblock {\em Soft Computing}, 17(2):285--300, 2013.
+
 \bibitem{bollini1999distributed}
 A.~Bollini and M.~Piastra.
 \newblock {Distributed and persistent evolutionary algorithms: a design
@@ -19,6 +24,23 @@ C.~D. Cheng and A.~Kosorukoff.
   interactive and human-based genetic algorithms.
 \newblock In {\em Genetic and Evolutionary Computation--GECCO 2004}, pages
   983--993. Springer, 2004.
+
+\bibitem{Daw86}
+R.~Dawkins.
+\newblock {\em The BlindWatchmaker, 1986.}
+\newblock Longman, Essex, U.K., 1986.
+
+\bibitem{DC07}
+K.~Deb and S.~Chaudhuri.
+\newblock I-mode: An interactive multi-objective optimization and
+  decision-making using evolutionary methods.
+\newblock KanGal report 2007003, Kanpur Genetic Algorithms Laboratory, 2007.
+
+\bibitem{DK07}
+K.~Deb and A.~Kumar.
+\newblock Interactive evolutionary multi-objective optimization and
+  decision-making using reference direction method.
+\newblock KanGal report 2007001, Kanpur Genetic Algorithms Laboratory, 2007.
 
 \bibitem{garcia2014unreliable}
 M.~Garc{\'\i}a-Valdez, J.~J.~M. Guerv{\'o}s, and F.~F. de~Vega.
@@ -119,6 +141,21 @@ J.~V. Nickerson.
 \newblock In P.~Michelucci, editor, {\em Handbook of Human Computation}, pages
   641--648, New York, NY, 2013. Springer New York.
 
+\bibitem{parmee:human-centric2003}
+I.~C. Parmee.
+\newblock Human-centric evolutionary systems in design and decision-making.
+\newblock In J.-P. Rennard, editor, {\em Handbook of Research on
+  Nature-Inspired Computing for Economics and Management}, pages 395--411.
+  {IGI} Global, 2007.
+
+\bibitem{parmee08user-centric}
+I.~C. Parmee, J.~A.~R. Abraham, and A.~Machwe.
+\newblock User-centric evolutionary computing: Melding human and machine
+  capability to satisfy multiple criteria.
+\newblock In J.~Knowles, D.~Corne, K.~Deb, and D.~R. Chair, editors, {\em
+  Multiobjective Problem Solving from Nature}, Natural Computing Series, pages
+  263--283. Springer, Berlin Heidelberg, 2008.
+
 \bibitem{quinn2011human}
 A.~J. Quinn and B.~B. Bederson.
 \newblock Human computation: a survey and taxonomy of a growing field.
@@ -130,6 +167,12 @@ G.~Roy, H.~Lee, J.~Welch, Y.~Zhao, V.~Pandey, and D.~Thurston.
 \newblock A distributed pool architecture for genetic algorithms.
 \newblock In {\em Evolutionary Computation, 2009. CEC '09. IEEE Congress on},
   pages 1177--1184, May 2009.
+
+\bibitem{takagi01interactive}
+H.~Takagi.
+\newblock Interactive evolutionary computation: Fusion of the capabilities of
+  {EC} optimization and human evaluation.
+\newblock {\em Proceedings of the IEEE}, 9:1275--1296, 2001.
 
 \bibitem{DBLP:journals/grid/ValdezTGVO15}
 M.~G. Valdez, L.~Trujillo, J.~J. Merelo-Guerv{\'{o}}s, F.~F. de~Vega, and
