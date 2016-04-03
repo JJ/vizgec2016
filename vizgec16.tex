@@ -241,11 +241,11 @@ ephemeral and dynamic computing environment in which we are
 working. 
 
 The server receives the chromosome and its fitness and
- stores them returning to the client a random individual from the
-cache and some more information, like the cache size at this
+stores them returning to the client a random individual from the %stores them? chromosomes then?
+cache along with some more information, like the cache size at that
 particular moment. This cache size information can be used by the
 client for detecting when the current algorithm has found a solution,
-or also for visualization purposes. A function for detecting when the
+or also for visualization purposes. In the server, a function for detecting when the
 solution is found is used and, when that happens, the cache is emptied
 and a variable that keeps track of the experiment number is
 incremented. In principle, any of those indicators can be used by the
@@ -320,8 +320,8 @@ impossible to get out with a single mutation; it needs a string of
 favorable mutations, all of them having a lower fitness. So in
 principle that situation could help the user to restart the simulation
 in that case, but it is almost impossible for the user to forecast
-when that will be happening and avoid it, either by restarting or by
-starting it in other browser tabs. 
+when that will be happening to avoid it, either by restarting or by
+starting new islands in other browser tabs. 
 
 \begin{figure}[!htb]
 \centering
@@ -378,7 +378,7 @@ that at least included some information on it.
   added to the pool; it stays the same if the users keep sending the
   same individuals. The graph shows the activity of the last 5000
   generations in a rotating fashion, eliminating the first as new ones
-  arrive. In this case the cache has changed size since some other
+  arrive. In this case the cache has changed in size since some other
   user has found the solution.   \label{fig:howmuch}}
 \end{figure}
 %
@@ -402,7 +402,7 @@ population by the user, either by restarting one window or starting
 new ones. In order to measure this effectivity, we measuered the
 amount of reboots per IP. When the first graph was used, the average
 was 0.74; the second graph, depending on the batch of experiments,
-registered averages over 1, 1.58 in a first batch, 1.16 in a second
+registered averages over 1, 1.58 in a first batch and 1.16 in a second
 batch, both carried out in the month of February and March, indicating
 an average of more than 1 reboot per user. This might indicate that
 showing more information to the user, specially about the global
