@@ -65,6 +65,15 @@ J.-J. {Merelo}, M.~{Garc{\'{\i}}a-Valdez}, P.~A. {Castillo},
   algorithms : first results}.
 \newblock {\em ArXiv e-prints}, Jan. 2016.
 
+\bibitem{jj:2008:PPSN}
+J.~J. Merelo, A.~M. Mora, P.~A. Castillo, J.~L.~J. Laredo, L.~Araujo, K.~C.
+  Sharman, A.~I. Esparcia-Alcázar, E.~Alfaro-Cid, and C.~Cotta.
+\newblock Testing the intermediate disturbance hypothesis: Effect of
+  asynchronous population incorporation on multi-deme evolutionary algorithms.
+\newblock In G.~Rudolph, T.~Jansen, S.~Lucas, C.~Poloni, and N.~Beume, editors,
+  {\em Parallel Problem Solving from Nature - PPSN X}, volume 5199 of {\em
+  LNCS}, pages 266--275, Dortmund, 13-17 Sept. 2008. Springer.
+
 \bibitem{nodeo2014}
 J.~J. Merelo~Guerv\'{o}s.
 \newblock {NodEO}, a evolutionary algorithm library in {Node}.

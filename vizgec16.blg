@@ -8,45 +8,45 @@ Warning--entry type for "figshare:nodeo" isn't style-file defined
 Database file #2: volunteer.bib
 Database file #3: javascript.bib
 Database file #4: pool.bib
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            643 strings with 8893 characters,
-and the built_in function-call counts, 8952 in all, are:
-= -- 894
-> -- 433
-< -- 16
-+ -- 165
-- -- 144
-* -- 614
-:= -- 1372
-add.period$ -- 67
-call.type$ -- 19
-change.case$ -- 122
+            655 strings with 9398 characters,
+and the built_in function-call counts, 9724 in all, are:
+= -- 960
+> -- 498
+< -- 18
++ -- 189
+- -- 167
+* -- 689
+:= -- 1498
+add.period$ -- 71
+call.type$ -- 20
+change.case$ -- 134
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 365
-empty$ -- 683
-format.name$ -- 144
-if$ -- 1986
+cite$ -- 20
+duplicate$ -- 389
+empty$ -- 724
+format.name$ -- 167
+if$ -- 2147
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 17
-newline$ -- 98
-num.names$ -- 52
-pop$ -- 146
+int.to.str$ -- 20
+missing$ -- 18
+newline$ -- 103
+num.names$ -- 56
+pop$ -- 159
 preamble$ -- 1
-purify$ -- 102
+purify$ -- 113
 quote$ -- 0
-skip$ -- 301
+skip$ -- 319
 stack$ -- 0
-substring$ -- 596
-swap$ -- 156
-text.length$ -- 16
+substring$ -- 629
+swap$ -- 168
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 76
+type$ -- 80
 warning$ -- 0
-while$ -- 84
-width$ -- 21
-write$ -- 224
+while$ -- 89
+width$ -- 22
+write$ -- 238
 (There was 1 warning)
