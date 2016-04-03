@@ -148,8 +148,6 @@ the art, an exposition of our efforts so far and finally instead of
 conclusions several research questions that we hope are the bases for
 a discussion of this issue.
 
-
-
 %---------------------------------------------------------------
 \section{State of the art}
 \label{sec:soa}
@@ -195,7 +193,9 @@ However, the visualization performance or the latter evolutionary algorithm is
 eschewed, so that the only hint
 that the user has of how the algorithm is doing is the fitness itself
 or, even, just a hint of how close the user is to his desired
-value. This is the problem we have been trying to solve and we will
+value. 
+
+This is the problem we have been trying to solve and we will
 show our solutions below, before calling for others in the last part
 of the paper. 
 
@@ -230,7 +230,8 @@ during the whole experiment.
 The cache is renovated in a First
 In, First Out fashion, which, from the point of view of the
 evolutionary algorithm, contributes to the diversity of the stored
-population, since it is renovated from time to time. In general, this way of using a stored population from
+population, since it is renovated from time to time. In general, this
+way of using a stored population from 
 which some individuals are drawn is called a pool-based evolutionary
 algorithm
 \cite{pool:ga,bollini1999distributed,gong2015distributed,
@@ -241,7 +242,8 @@ ephemeral and dynamic computing environment in which we are
 working. 
 
 The server receives the chromosome and its fitness and
-stores them returning to the client a random individual from the %stores them? chromosomes then?
+stores them, using the chromosome binary string as a key, and
+returning to the client a random individual from the 
 cache along with some more information, like the cache size at that
 particular moment. This cache size information can be used by the
 client for detecting when the current algorithm has found a solution,
