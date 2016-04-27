@@ -63,49 +63,27 @@ Juan-J.~Merelo\titlenote{Corresponding author}\\
 Mario Garc\'ia-Valdez \\
 \affaddr{Dept. of Graduate Studies}\\
 \affaddr{ Instituto Tecnol\'ogico de Tijuana, Tijuana, Mexico}\\
+\email{mario@tectijuana.edu.mx}
 \alignauthor
 Carlos Cotta\\
 \affaddr{Dept. LCC, ETSI Inform\'atica}\\
 \affaddr{ Universidad de M\'alaga, M\'alaga, Spain}\\
+\email{ccottap@lcc.uma.es}
 }
 
 \maketitle
 
-\begin{abstract}
 
-Using volunteer's browsers as a computing resource presents several
-advantages, including cost, but it remains a challenge to fully
-harness the browser's capabilities and to model the user's behavior so
-that those capabilities can be leveraged optimally. One of the main
-challenges, and heretofore not addressed, is how to first keep the
-user engaged in the experiment so that his computation time is
-maximized, and second and second how to present the information in
-such a way that the participation also becomes a call to action, where
-volunteers can operate parts of the evolutionary algorithm itself thus
-becoming as a community, even more, an integral part of the
-experiment. This paper is not a presentation of results, but rather a
-call for comments to find out how to address these problems in the
-most systematic way.
-
-
-\end{abstract}
-
-\keywords{Volunteer computing, distributed computing, cloud computing,
-visualization}
+%\keywords{Volunteer computing, distributed computing, cloud computing,
+%visualization}
 
 
 %---------------------------------------------------------------
 \section{Introduction}
 
 In volunteer computing systems, one of the objectives is to get
-users to contribute to the experiment with as much time as it is possible. Most of the
-efforts nowadays include gamification techniques, but these have the problem that
-a competition has an implicit incentive to cheat to get ahead of your
-competitors, that is why there is a research area in volunteer
-computing that addresses cheating by volunteers
-\cite{7300898,domingues2007sabotage}. 
-
-In the case of systems such a NodIO \cite{2016arXiv160101607M}, which
+users to contribute to the experiment with as much time as it is
+possible. In the case of systems such a NodIO \cite{2016arXiv160101607M}, which
 provide a minimal infrastructure to support pool-based distributed
 evolutionary computing experiments, there is another issue with the 
 user: the fact that there is some interaction that can be done besides
@@ -148,152 +126,15 @@ the art, an exposition of our efforts so far and finally instead of
 conclusions several research questions that we hope are the bases for
 a discussion of this issue.
 
-%---------------------------------------------------------------
-\section{State of the art}
-\label{sec:soa}
 
-As far as we have been able to find, there is no research devoted
-exclusively to visualization to maximize involvement and interactivity
-in volunteer computing experiments. From the very beginning,
-BOINC@home included visualization of the computation results
-\cite{anderson2006designing}, but it was only for informative
-purposes, not a part of the system itself. 
-
-There has been, however, a certain amount of research in interactive
-evolutionary algorithms, e.g.,
-\cite{takagi01interactive,parmee:human-centric2003,parmee08user-centric,badillo13usercentric},
-where users perform all or some evolutionary
-operations; in our case, since the
-user only has control of the browser, there is a limited amount of
-interaction with it, namely, the fact that by reloading the webpage they
-can apply some kind of hypermutation, killing the current population and
-generating new individuals some of which will make their way to the
-common pool via migration. In that sense, volunteer computing is also
-a way of {\em human computation} \cite{quinn2011human}, a concept that
-has also been applied to evolutionary algorithms \cite{972056, Nickerson2013}, in
-this case extensively and with all operators. In general, these type
-of human based evolutionary algorithms must be constrained to those in
-which the problem representation can be understand by us; 
-For example, some early approaches 
-\cite{Daw86} relied on the visualization of solutions so that the user can 
-pick his/her preferred ones. In a more general approach, \cite{takagi-jcis2000} 
-considered the utilization of dimensionality-reduction techniques in order
-to project the population of solutions to a more amenable space (a 2D plane)
-on which the user can express his preferences. The work of Deb et al. in
-multi-objective optimization \cite{DC07,DK07} was similarly aimed to direct 
-the exploration toward particular regions of the Pareto front.
-Cheng and Kosorukoff \cite{cheng2004interactive} mention evolution of text messages and
-applies it to the evolution of colors, where users have to pick up two
-colored blocks to perform crossover; this is later on extended to the
-OneMax problem, comparing the performance of a human operator who does
-not know the shape of the fitness function with that of an interactive
-evolutionary algorithm where the user himself is the one that acts as
-fitness evaluator.
-However, the visualization performance or the latter evolutionary algorithm is
-eschewed, so that the only hint
-that the user has of how the algorithm is doing is the fitness itself
-or, even, just a hint of how close the user is to his desired
-value. 
-
-This is the problem we have been trying to solve and we will
-show our solutions below, before calling for others in the last part
-of the paper. 
-
-\section{Description of the system and some results}
-\label{sec:res}
-
-NodIO \cite{2016arXiv160101607M,DBLP:conf/gecco/GuervosG15} is a
+NodIO \cite{DBLP:conf/gecco/GuervosG15} is a
 web-services based system that provides a basic platform to run distributed evolutionary
 computing experiments, including volunteer computing systems, with a
 low overhead.  
-
-The common part of all algorithms is the server, that has been
-published with a free license in GitHub, which includes several REST
-(Representational state transfer)
-routes, which are remote procedure calls using the HTTP (Hypertext
-Transfer Protocol). In practice, that means that clients use a
-standard and well known interface, HTTP, to communicate with it and
-clients can be written in many different languages, including
-JavaScript on the client  or Perl. 
-
-The server receives individuals from the client using the {\tt PUT}
-HTTP method. The individual received is stored in a cache that is
-refreshed in sub-second intervals, currently set at 0.2 seconds, and
-has a finite size equal to 32, although it can contain a few elements
-more before the refreshing period finishes. The finite cache is used
-for implementation but also algorithmic reasons; it needs to be finite
-to limit the amount of memory used by the server, which could blow up
-to a size too big for the server, but from the algorithmic point of
-view, it is also  a good practice to keep only the latest solutions so
-that one of them is sent to the clients, instead of one of the many created
-during the whole experiment. 
-The cache is renovated in a First
-In, First Out fashion, which, from the point of view of the
-evolutionary algorithm, contributes to the diversity of the stored
-population, since it is renovated from time to time. In general, this
-way of using a stored population from 
-which some individuals are drawn is called a pool-based evolutionary
-algorithm
-\cite{pool:ga,bollini1999distributed,gong2015distributed,
-  sofea:evopar2012,DBLP:journals/grid/ValdezTGVO15,garcia2014unreliable,LNCS86720702,
-  DBLP:conf/3pgcic/GuervosMFEL12,sofea:naco}; this type of
-asynchronous and persistent algorithm lends itself better for the
-ephemeral and dynamic computing environment in which we are
-working. 
-
-The server receives the chromosome and its fitness and
-stores them, using the chromosome binary string as a key, and
-returning to the client a random individual from the 
-cache along with some more information, like the cache size at that
-particular moment. This cache size information can be used by the
-client for detecting when the current algorithm has found a solution,
-or also for visualization purposes. In the server, a function for detecting when the
-solution is found is used and, when that happens, the cache is emptied
-and a variable that keeps track of the experiment number is
-incremented. In principle, any of those indicators can be used by the
-clients to check whether the experiment has finished or not. 
-
-The clients run an island-based evolutionary algorithm for solving the
-50-Trap problem programmed in JavaScript using a browser version of
-the NodEO library \cite{DBLP:conf/gecco/GuervosVGES14,figshare:nodeo,nodeo2014}. It is a difficult combinatorial optimization and
-deceptive problem which has been chosen mainly for the time and the
-population size it needs to succeed. Deceptive problems are known for
-the high diversity they need for finding the solution; this diversity
-must be in the initial population or else maintained in the population
-by using different mechanisms. However, the population of every client
-has to be kept low to avoid overloading the volunteer computer;
-currently it is 128 individuals, and other mechanisms will need a
-level of analysis that is incompatible with the ephemeral nature of
-the system. Every 100 generations, the client sends using HTTP PUT the
-best chromosome to the server, receiving in return a random chromosome
-from the cache and the cache size. If the client finds the solution,
-it stops. If the client finds that cache size has decreased by a
-certain number, it reloads the page, restarting the population all
-over again, avoiding overlapping ``old'' results with the new
-experiment.
  
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.99\linewidth]{tweet.png}
-\caption{Tweet asking for help in the volunteer computing experiment,
-  and also showing the amount of retweets and date. In most cases,
-  tweets were in Spanish. The URL mentioned is active at the time of
-  writing this paper. \label{fig:tweet}}
-\end{figure}
-%
-In order to run the experiments, we announced it in social networks
-via a tweet, WhatsApp message, Facebook post, Telegram message or, in
-some occasions, LinkedIn. One of the announcements is shown in Figure
-\ref{fig:tweet}. Volunteer computing cannot be understood without its
-social part, since it needs a continuous inflow of new
-users, but so far there is no relation to the algorithm itself or the
-current situation. Using social networks to visualize the progress of
-the algorithm is also an area that might be interesting to explore. 
-
 \begin{figure*}[!htb]
 \centering
-\includegraphics[width=0.95\linewidth]{all.png}
-\includegraphics[width=0.95\linewidth]{finish.png}
+\includegraphics[width=0.9\linewidth]{all.png}
 \caption{The three panels showing the latest fitness, the cache size
   and the best chromosome using 4 shades from white to black to
   represent the number of ones in every block in the Trap
@@ -325,16 +166,8 @@ in that case, but it is almost impossible for the user to forecast
 when that will be happening to avoid it, either by restarting or by
 starting new islands in other browser tabs. 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.95\linewidth]{fitness.png}
-\caption{This panel, labeled with ``How are we doing'', shows
-  the evolution in time of the fitness, it rotates to show only the
-  last 5000 generations.  \label{fig:fitness}}
-\end{figure}
-%
 This information might be redundant with that shown in the fitness
-panel, shown in Figure \ref{fig:fitness}. However, it helps when you
+panel. However, it helps when you
 have several windows, side by side. If the best chromosome is the same
 in both, not only a single island is stuck, but the whole number of
 islands contributing are. That happens usually when there is a single
@@ -352,14 +185,6 @@ happening; this is a kind of information that we would need to convey
 to the user by way of visualization. But that is why we use the third
 panel. 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.95\linewidth]{howmany.png}
-\caption{This panel, labeled with ``How many are out there'', shows
-  the number of different IPs that are contributing to the simulation,
-  accumulated since the beginning of the simulation run.  \label{fig:howmany}}
-\end{figure}
-% 
 Initially we used as third panel the number of IPs that had
 participated so far, shown in Figure \ref{fig:howmany}. This was
 mainly for the benefit of us, not really the user; it was a way of
@@ -372,20 +197,7 @@ the instantaneous, or in the last minutes, number of participating
 IPs. That is why we opted to change that visualization to a new one
 that at least included some information on it. 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.95\linewidth]{contribution.png}
-\caption{This panel, labeled with ``How much I am contributing'', in
-  fact shows the cache size. Cache increases when new individuals are
-  added to the pool; it stays the same if the users keep sending the
-  same individuals. The graph shows the activity of the last 5000
-  generations in a rotating fashion, eliminating the first as new ones
-  arrive. In this case the cache has changed in size since some other
-  user has found the solution.   \label{fig:howmuch}}
-\end{figure}
-%
-Figure \ref{fig:howmuch} was labelled {\em how much I am
-  contributing}. That is not exactly what is shown in the graph, that
+That is not exactly what is shown in the graph, that
 shows the cache size. However, if you combine this panel with the
 other, and the fitness panel and the chromosome panel shows some
 change, you will see if that change is incorporated to the cache if
