@@ -161,14 +161,15 @@ that represent their block fitness, from 0 (transparent) to 2
 is represented by dark gray. 
 
 From the point of view of the user, this is probably one of the best
-indicators of the stagnation of the simulation. The most likely
-situation is to have that panel stuck with all blocks in black except
-one in gray, with the fitness stuck at 99. If that happens for a long
-time, it is almost impossible for a single island to find the
-solution, because it is stuck in a local minimum from which it is
-impossible to get out with a single mutation; it needs a string of
-favorable mutations, all of them having a lower fitness. So in
-principle that situation could help the user to restart the simulation
+indicators of the stagnation of the simulation. %The most likely
+%situation is to have that panel stuck with all blocks in black except
+%one in gray, with the fitness stuck at 99. If that happens for a long
+%time, it is almost impossible for a single island to find the
+%solution, because it is stuck in a local minimum from which it is
+%impossible to get out with a single mutation; it needs a string of
+%favorable mutations, all of them having a lower fitness. So in
+%principle that situation 
+It could help the user to restart the simulation
 in that case, but it is almost impossible for the user to forecast
 when that will be happening to avoid it, either by restarting or by
 starting new islands in other browser tabs. 
@@ -217,23 +218,23 @@ of conveying global information and it requires a certain amount of
 information given to the user so that he or she can understand what is
 going on.
 
-In order to see whether this new panel was more effective from the
-point of view of the user interaction than the previous one, we
-measured the amount of {\em reboots}, that is, new initializations of
-population by the user, either by restarting one window or starting
-new ones. In order to measure this effectivity, we measuered the
-amount of reboots per IP. When the first graph was used, the average
-was 0.74; the second graph, depending on the batch of experiments,
-registered averages over 1, 1.58 in a first batch and 1.16 in a second
-batch, both carried out in the month of February and March, indicating
-an average of more than 1 reboot per user. This might indicate that
-showing more information to the user, specially about the global
-progress of the experiment, encourages them to act on it, by using the
-only tool they have: reloading the page, thus restarting the
-experiment, or loading it in new pages. And that is also the reason
-why we think that using innovative ways of visualization will
-encourage them to interact even more with it, turning it into a truly
-interactive experiment. 
+%In order to see whether this new panel was more effective from the
+%point of view of the user interaction than the previous one, we
+%measured the amount of {\em reboots}, that is, new initializations of
+%population by the user, either by restarting one window or starting
+%new ones. In order to measure this effectivity, we measured the
+%amount of reboots per IP. When the first graph was used, the average
+%was 0.74; the second graph, depending on the batch of experiments,
+%registered averages over 1, 1.58 in a first batch and 1.16 in a second
+%batch, both carried out in the month of February and March, indicating
+%an average of more than 1 reboot per user. This might indicate that
+%showing more information to the user, specially about the global
+%progress of the experiment, encourages them to act on it, by using the
+%only tool they have: reloading the page, thus restarting the
+%experiment, or loading it in new pages. And that is also the reason
+%why we think that using innovative ways of visualization will
+%encourage them to interact even more with it, turning it into a truly
+%interactive experiment. 
 
 
 %---------------------------------------------------------------
@@ -243,48 +244,44 @@ interactive experiment.
 For the time being, the only possible interactions the user has is to start  or
 restart new islands. However, this does not need to be the only way the user 
 can help the simulation. Even keeping the user interface as simple as
-possible, other possibilities could include:\begin{itemize}
-\item {\em Killing} the best individual, thus immediately creating
-  diversity by forcing the rest to compete.
-\item Increasing or decreasing the population size. A bigger
-  population will have higher initial diversity.
-\item Increasing or decreasing the mutation or crossover rate. For the time being,
-  bitflip mutation is used on every new generated individual. Maybe it
-  could be decreased to a lower percentage, or increase the number of
-  bits flipped for every individual generated.
-\end{itemize}
+possible, other possibilities could include: (i) {\em killing} the best individual, thus immediately creating
+  diversity by forcing the rest to compete; (ii) increasing or decreasing the population size. A bigger
+  population will have higher initial diversity; (iii) increasing or decreasing the mutation or crossover rate. For the time being,
+  bitflip mutation is used on every new generated individual. 
+%  Maybe it
+%  could be decreased to a lower percentage, or increase the number of
+%  bits flipped for every individual generated.
 
 However, even if whatever the user does will contribute to diversity,
 if it is done blindly it will explore more than exploit and thus be a
 waste of computational resources. That is why there are several
-possible ways of showing progress and diversity, which is a predictor
-for future progress:\begin{itemize}
-\item Represent the convergence of the population towards a single
+possible ways of showing progress and diversity%, which is a predictor for future progress
+: (i) represent the convergence of the population towards a single
   individual by showing, using grayscale, the uniformity of values for
-  all bits. This can be represented alongside the best one, or maybe
-  instead of the best one.
-\item Represent global diversity by having a measure of compression
+  all bits; %. This can be represented alongside the best one, or maybe
+  %instead of the best one.
+(ii) represent global diversity by having a measure of compression
   entropy plotted, instead or alongside the cache size.
-\end{itemize}
 
-This can be complemented by other visualization techniques, such as \begin{itemize}
-\item Use Twitter or a Telegram channel to represent the progress of
+This can be complemented by other visualization techniques, such as 
+(i) use Twitter or a Telegram channel to represent the progress of
   the current experiment, or making calls when a new experiment has
-  started to have an early infusion of diversity.
-\item Represent the progress of the particular user against the rest
+  started to have an early infusion of diversity, 
+(i) represent the progress of the particular user against the rest
   of the users, showing the fitness of every one, for instance, or the
   time every one has spent represented by the number of PUTs that have
-  been made. The fitness has the problem that, after certain time, all
-  fitness would be the same. However, this can be seen as an indicator
-  that the experiment has stagnated and thus a restart has to be made.
-\item Keep past history and represent the current experiment comparing its
+  been made,
+%  The fitness has the problem that, after certain time, all
+%  fitness would be the same. However, this can be seen as an indicator
+%  that the experiment has stagnated and thus a restart has to be made.
+(iii) keep past history and represent the current experiment comparing its
   progress to the progress of previous ones.
-\item Show global fitness alongside local fitness. Once again, the 
-  best global fitness (as contained in the cache) is not the best predictor
-  of future progress, since the nature of the problem will mean that
-  reaching the global fitness will, in fact, mean that the population
-  has converged to a local minimum
-\end{itemize}
+(iv) show global fitness alongside local fitness, 
+%Once again, the 
+%  best global fitness (as contained in the cache) is not the best predictor
+%  of future progress, since the nature of the problem will mean that
+%  reaching the global fitness will, in fact, mean that the population
+%  has converged to a local minimum
 
 More important maybe that the data itself is the way of representing
 it. A visualization that shows how well or badly the global algorithm
@@ -296,32 +293,33 @@ research questions
 
 With this paper we would like to raise a series of research questions
 on the good use of visualization of evolutionary algorithms in
-distributed voluntary evolutionary computing experiments. These are
-questions to be discussed on the workshop itself, or as comments when
-this paper will be published online. We are also expecting comments in
-the repository where this paper has been elaborated in GitHub
-\url{https://github.com/JJ/vizgec2016/}. Following an Open Science
-policy, most papers by our research groups are created in an open
-repository that is open for collaboration and discussion.
-
-\begin{enumerate}
-\item How can we represent in a meaningful but at the same time simple
+distributed voluntary evolutionary computing experiments:
+%. These are
+%questions to be discussed on the workshop itself, or as comments when
+%this paper will be published online. 
+%We are also expecting comments in
+%the repository where this paper has been elaborated in GitHub
+%\footnote{\url{https://github.com/JJ/vizgec2016/}}. Following an Open Science
+%policy, most papers by our research groups are created in an open
+%repository that is open for collaboration and discussion.
+%\begin{enumerate}
+(i) how can we represent in a meaningful but at the same time simple
   way the global progress of the simulation so that the user can take
   action if he needs to?
-\item How can we also represent diversity so that it conveys to the
+(ii) how can we also represent diversity so that it conveys to the
   user the fact that he or she can help by taking whatever measures
   the client allows, even a simple restart?
-\item Should we use some kind of reinforcement, indicating whether the
+(iii) should we use some kind of reinforcement, indicating whether the
   individuals created locally by the user have helped find the global solution?
-\item How could we gamify participation so that, at the same time,
+(iv) how could we gamify participation so that, at the same time,
   cheating is discouraged?
-\item How can we implement this ideas with a minimum overhead to the system?  
-\item Finally, how can any of these measures be taken so that it is
+(v) how can we implement this ideas with a minimum overhead to the system?  
+(vi) Finally, how can any of these measures be taken so that it is
   not a impossible overhead for the algorithm itself?
-\end{enumerate}
+
 
 %---------------------------------------------------------------
-\section*{Acknowledgments}
+\subsection*{Acknowledgments}
  
 This work has been supported in part by
 TIN2014-56494-C4-{1,3}-P (Spanish Ministry of Economy and
