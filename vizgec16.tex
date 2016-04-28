@@ -13,16 +13,11 @@
 \begin{document}
 
 % Copyright
-\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-%\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
-%Conference
-\conferenceinfo{GECCO '16}{Denver, CO, USA}
+\CopyrightYear{2016}
+\setcopyright{acmlicensed}
+\conferenceinfo{GECCO'16 Companion,}{July 20 - 24, 2016, Denver, CO, USA}
+\isbn{978-1-4503-4323-7/16/07}\acmPrice{\$15.00}
+\doi{http://dx.doi.org/10.1145/2908961.2931742}
 % --- End of Author Metadata ---
 
 \title{Visualizing for success: How can we make the user more efficient in
@@ -81,9 +76,9 @@ Carlos Cotta\\
 %---------------------------------------------------------------
 \section{Introduction}
 
-In volunteer computing systems, one of the objectives is to get
+The main objective in volunteer computing systems is to get
 users to contribute to the experiment with as much time as it is
-possible. In the case of systems such as NodIO \cite{2016arXiv160101607M,DBLP:conf/gecco/GuervosG15}, 
+possible. In the case of systems such as NodIO \cite{DBLP:conf/gecco/GuervosG15}, 
 a
 web-service based system which
 provides a minimal infrastructure to support pool-based distributed
@@ -145,8 +140,8 @@ improve the overall usabilty of the system.
 \caption{The three panels showing the latest fitness, the cache size
   and the best chromosome using 4 shades from white to black to
   represent the number of ones in every block in the Trap
-  problem at the top; at bottom, the finished algorithm showing 5
-  black bars indicating that the 50 traps have been found. \label{fig:all}}
+  problem at the top; at bottom, the panel showing 5
+  black bars indicating that all but 4  traps have been found. \label{fig:all}}
 \end{figure*}
 %
 The client displays three panels, showing three different
@@ -155,7 +150,7 @@ kept fixed for all experiments, and they are shown in Figure
 \ref{fig:all}. The top panels show, to the right, the fitness in the
 last 5000 generations at 100 generations interval. The bottom panel
 shows a visualization of the best individual, using blocks that
-represent the number of ones in 4-bit blocks with different colors
+represent the number of ones in 4-bit blocks with different shades 
 that represent their block fitness, from 0 (transparent) to 2
 (black). 1 is the intermediate fitness, achieved with all 0s, and it
 is represented by dark gray. 
@@ -186,7 +181,7 @@ random individuals from the cache, they are bound to get that {\em
 population, crashing global diversity. The best situation is when
 several individuals arrive at short intervals, contributing diversity
 but also individuals that are not so different; by the {\em
-  intermediate disturbance hypothesis} \cite{jj:2008:PPSN} that
+  intermediate disturbance hypothesis} that
 situation will boost the performance of the whole system. However, the
 user in general will run a single tab, so they will not know that is
 happening; this is a kind of information that we would need to convey
@@ -264,7 +259,7 @@ possible ways of showing progress and diversity%, which is a predictor for futur
   entropy plotted, instead or alongside the cache size.
 
 This can be complemented by other visualization techniques, such as 
-(i) use Twitter or a Telegram channel to represent the progress of
+(i) use Twitter or a Telegram channel to show the progress of
   the current experiment, or making calls when a new experiment has
   started to have an early infusion of diversity, 
 (i) represent the progress of the particular user against the rest
@@ -275,7 +270,7 @@ This can be complemented by other visualization techniques, such as
 %  fitness would be the same. However, this can be seen as an indicator
 %  that the experiment has stagnated and thus a restart has to be made.
 (iii) keep past history and represent the current experiment comparing its
-  progress to the progress of previous ones.
+  progress to the progress of previous ones,
 (iv) show global fitness alongside local fitness, 
 %Once again, the 
 %  best global fitness (as contained in the cache) is not the best predictor
@@ -316,7 +311,6 @@ distributed voluntary evolutionary computing experiments:
 (v) how can we implement this ideas with a minimum overhead to the system?  
 (vi) Finally, how can any of these measures be taken so that it is
   not a impossible overhead for the algorithm itself?
-
 
 %---------------------------------------------------------------
 \subsection*{Acknowledgments}
