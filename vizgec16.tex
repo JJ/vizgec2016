@@ -83,28 +83,32 @@ Carlos Cotta\\
 
 In volunteer computing systems, one of the objectives is to get
 users to contribute to the experiment with as much time as it is
-possible. In the case of systems such a NodIO \cite{2016arXiv160101607M}, which
-provide a minimal infrastructure to support pool-based distributed
+possible. In the case of systems such as NodIO \cite{2016arXiv160101607M,DBLP:conf/gecco/GuervosG15}, 
+a
+web-service based system which
+provides a minimal infrastructure to support pool-based distributed
 evolutionary computing experiments, there is another issue with the 
 user: the fact that there is some interaction that can be done besides
 simply loading the web page once. 
 
-NodIO has been used for volunteer computing experiments by
+NodIO 
+has been used for volunteer computing experiments by
 embedding an island-based evolutionary algorithm inside a web page and
 making them interchange information via the NodIO server, in a
 spontaneous and eventually, since all islands communicate via the
 server, panmictic distributed evolutionary
 algorithm. In the experiments we have carried out so far we have
-realized that the way the user perceives the state of the algorithm
-can make him or her act in several ways. For instance, reloading the
-page, in which case a new population will be generated, with the best
-% Maybe make it clearer: with the best of the new individuals
-individuals being sent to the pool adding to the diversity of that
-pool. The user can also load the webpage in several browsers or
-browser tabs thus is adding more computing power and seeing how the 
-solution spreads from one island to the other. In any case, we have noticed
+realized %that the way the user perceives the state of the algorithm
+%can make him or her act in several ways. For instance, reloading the
+%page, in which case a new population will be generated, with the best
+%% Maybe make it clearer: with the best of the new individuals
+%individuals being sent to the pool adding to the diversity of that
+%pool. The user can also load the webpage in several browsers or
+%browser tabs thus is adding more computing power and seeing how the 
+%solution spreads from one island to the other. In any case, we have noticed
 that the user is spontaneously making it an {\em interactive}
-algorithm \cite{takagi01interactive}, by applying {\em hypermutation} 
+algorithm %\cite{takagi01interactive}, 
+by applying {\em hypermutation} 
 operators or even {\em distributing} the population themselves if the 
 performance of their machine allows them to do so. 
 %What is an example of hypermutation? When they reboot the algorithms? 
@@ -112,8 +116,8 @@ performance of their machine allows them to do so.
 %making it an {\em interactive} algorithm by applying {\em hypermutation}  operators
 However, it will be impossible for the user to perceive what is
 happening if the visualization does not convey that information in a
-way that can be first understood by anyone without using any technical
-terms and second does not add too much overhead to the algorithm
+way that (1) can be first understood by anyone without using any technical
+terms and (2) does not add too much overhead to the algorithm
 itself. As far as we know, the problem of visualizing an evolutionary
 algorithm so that the non-technical and spontaneous user can help it
 find the solution faster has not been fully solved. We have made several
@@ -124,16 +128,16 @@ and can also design their own solutions for it. To reach this goal
 other aspects of the design must also be  addressed in order to
 improve the overall usabilty of the system.
 
-That is why the rest of the paper will be devoted to a short state of
-the art, an exposition of our efforts so far and finally instead of
-conclusions several research questions that we hope are the bases for
-a discussion of this issue.
-
-
-NodIO \cite{DBLP:conf/gecco/GuervosG15} is a
-web-services based system that provides a basic platform to run distributed evolutionary
-computing experiments, including volunteer computing systems, with a
-low overhead.  
+%That is why the rest of the paper will be devoted to a short state of
+%the art, an exposition of our efforts so far and finally instead of
+%conclusions several research questions that we hope are the bases for
+%a discussion of this issue.
+%
+%
+%NodIO \cite{DBLP:conf/gecco/GuervosG15} is a
+%web-services based system that provides a basic platform to run distributed evolutionary
+%computing experiments, including volunteer computing systems, with a
+%low overhead.  
  
 \begin{figure*}[!htb]
 \centering
@@ -189,7 +193,8 @@ to the user by way of visualization. But that is why we use the third
 panel. 
 
 Initially we used as third panel the number of IPs that had
-participated so far, shown in Figure \ref{fig:howmany}. This was
+participated so far. %, shown in Figure \ref{fig:howmany}. 
+This was
 mainly for the benefit of us, not really the user; it was a way of
 knowing the impact of some particular announcement and also to see how
 many users were there at a particular time. However, the user could
